@@ -63,3 +63,4 @@ typings/
 .idea/vcs.xml
 .idea/react-admin-backend.iml
 .idea/modules.xml
+.idea/.gitignore
