@@ -1,7 +1,6 @@
 {
   "name": "react-admin-backend",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "nodemon -r esm --inspect server.js"
   },
@@ -11,6 +10,7 @@
     "esm": "^3.2.25",
     "express": "~4.16.1",
     "lodash": "^4.17.15",
+    "mongoose": "^5.9.9",
     "morgan": "~1.9.1"
   },
   "devDependencies": {

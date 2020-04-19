@@ -1,11 +1,13 @@
 'use strict';
 
 import express from 'express';
-import bookingRequestController from '../controllers/articleRequestController';
+import articleRequestController from '../controllers/articleRequestController';
 
 const articleRequestAPI = express.Router();
 
 articleRequestAPI.route('/')
-    .get(bookingRequestController.getAllArticle);
+    .get(articleRequestController.getAllArticle)
+    .post(articleRequestController.saveArticle);
+
 
 export default articleRequestAPI;
