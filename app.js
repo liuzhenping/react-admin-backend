@@ -1,19 +1,20 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+'use strict';
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+import express from 'express';
+import logger from 'morgan';
+import bodyParser from 'body-parser';
+import router from './routes/createRouter';
 
-var app = express();
+const app = express();
 
+// 使用 morgan 将请求日志打印到控制台
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//用body parser 来解析post和url信息中的参数
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
-module.exports = app;
+// Routes which should handle requests
+app.use('/api', router);
+
+export default app;
