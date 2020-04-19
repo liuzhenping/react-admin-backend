@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
-const articleSchema = mongoose.Schema({
+const ArticleSchema = mongoose.Schema({
     title: mongoose.Schema.Types.String,
     content: mongoose.Schema.Types.Mixed,
     createDate: { type: Date, default: Date.now },
     updateDate: { type: Date, default: Date.now }
 });
 
-const article = mongoose.model('article', articleSchema);
+const Article = mongoose.model('article', ArticleSchema);
 
-export default article;
+export default Article;

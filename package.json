@@ -2,7 +2,13 @@
   "name": "react-admin-backend",
   "version": "0.0.0",
   "scripts": {
-    "start": "nodemon -r esm --inspect server.js"
+    "start": "nodemon -r esm --inspect server.js",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "dependencies": {
     "async": "^3.2.0",
@@ -16,6 +22,8 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "babel-jest": "^25.3.0",
+    "jest": "^25.3.0",
     "nodemon": "^2.0.3"
   }
 }
