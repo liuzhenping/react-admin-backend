@@ -36,7 +36,7 @@ const articleRequestController = {
     },
     updateArticle: async (req, res, next) => {
         try {
-            const article = await Article.updateOne({_id: req.body._id}, {title: req.body.title, content: req.body.content});
+            const article = await Article.updateOne({_id: req.body._id}, {title: req.body.title, content: req.body.content, updateDate: Date.now});
             res.status(HttpStatus.CREATED).json({
                 result: article
             });
