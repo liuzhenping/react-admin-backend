@@ -1,14 +1,31 @@
 'use strict';
 
 import Article from "../models/article";
+import HttpStatus from '../constant/HttpStatus';
 
 const articleRequestController = {
     getAllArticle: async (req, res, next) => {
         try {
-            const result = await Article.find({});
-            res.status(200).json({
-                message: 'All Articles are fetched',
-                result: result,
+            const articles = await Article.find({});
+            res.status(HttpStatus.OK).json({
+                result: articles
+            });
+        } catch (err) {
+            console.log(err);
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                error: err,
+            });
+        }
+    },
+    createArticle: async (req, res, next) => {
+        try {
+            const article = new Article({
+                title: req.body.title,
+                content: req.body.content
+            });
+            const result = await article.save();
+            res.status(HttpStatus.CREATED).json({
+                result: article
             });
         } catch (err) {
             console.log(err);
@@ -17,16 +34,11 @@ const articleRequestController = {
             });
         }
     },
-    saveArticle: async (req, res, next) => {
+    updateArticle: async (req, res, next) => {
         try {
-            const article = new Article({
-                title: req.body.title,
-                content: req.body.content
-            });
-            const dbResult = await article.save();
-            res.status(201).json({
-                message: 'Article is created successfully',
-                dbResult
+            const article = await Article.updateOne({_id: req.body._id}, {title: req.body.title, content: req.body.content});
+            res.status(HttpStatus.CREATED).json({
+                result: article
             });
         } catch (err) {
             console.log(err);
@@ -34,7 +46,20 @@ const articleRequestController = {
                 error: err,
             });
         }
-    }
+    },
+    getArticleById: async (req, res, next) => {
+        try {
+            const article = await Article.findById(req.params.id);
+            res.status(HttpStatus.OK).json({
+                result: article
+            });
+        } catch (err) {
+            console.log('Error getting article', err);
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                error: err,
+            });
+        }
+    },
 };
 
 export default articleRequestController;
