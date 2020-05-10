@@ -1,5 +1,8 @@
 import mongoose from 'mongoose'
 
+mongoose.connection.on('open', () => {
+    console.info('Mongoose connection - Opened');
+});
 mongoose.connection.on('connected', () => {
     console.info('Mongoose connection - Connected');
 });
@@ -14,8 +17,8 @@ mongoose.connection.on('error', (err) => {
 });
 
 const getMongoConfig = (database) => {
-    const mongodb = { options: {} };
-    mongodb.connectString = `mongodb://127.0.0.1/${database}`;
+    const mongodb = {options: {}};
+    mongodb.connectString = `mongodb://${database}`;
     // mongodb.options.user = mongoConfig.user;
     // mongodb.options.pass = mongoConfig.password;
     mongodb.options.reconnectTries = Number.MAX_VALUE;
@@ -33,4 +36,4 @@ const mongooseInitializer = {
     },
 };
 
-export { mongooseInitializer };
+export {mongooseInitializer};

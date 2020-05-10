@@ -2,10 +2,10 @@
 
 import express from 'express'
 
-import articleRequestController from '../api/articleRequestAPI';
+import articleRequestAPI from '../api/articleRequestAPI';
 
 const router = express.Router();
 
-router.use('/articles', articleRequestController);
+router.use('/articles', articleRequestAPI);
 
 export default router
