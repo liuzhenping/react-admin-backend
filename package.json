@@ -16,7 +16,7 @@
     "esm": "^3.2.25",
     "express": "~4.16.1",
     "http-errors": "^1.7.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mongoose": "^5.9.9",
     "morgan": "~1.9.1",
     "socket.io": "^2.3.0"
